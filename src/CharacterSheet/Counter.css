@@ -1,0 +1,26 @@
+.Counter {
+    display: inline-block;
+}
+.Counter__title {
+    display: block;
+}
+.Counter__input {
+    display: inline-block;
+}
+.Counter__input--button {
+    display: inline-block;
+    height: 2em;
+    width: 2em;
+}
+.Counter__input--number {
+    display: inline-block;
+    width: 2em;
+    text-align: center;
+}
+.Counter__input--button {
+    border: 1px solid black;
+}
+.Counter__input--number {
+    display: inline-block;
+    text-align: center;
+}

@@ -1,0 +1,12 @@
+.Label {
+    display: inline-block;
+}
+.Label__title {
+    display: block;
+}
+.Label__input {
+    display: block;
+    border: 1px solid black;
+    height: 2em;
+    padding: 0 0.5em;
+}

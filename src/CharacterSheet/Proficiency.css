@@ -1,0 +1,10 @@
+.ProficiencyContainer {
+    display: block;
+    list-style: none;
+}
+.Proficiency {
+    display: block;
+}
+.Proficiency--value {
+    text-decoration: underline;
+}

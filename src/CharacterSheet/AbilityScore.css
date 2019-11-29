@@ -1,0 +1,25 @@
+
+.AbilityScore {
+    display: inline-block;
+}
+.AbilityScore__box,
+.AbilityScore__title {
+    display: block;
+    text-align: center;
+}
+.AbilityScore__box--score {
+    display: block;
+    text-align: center;
+}
+.AbilityScore__box--modifier {
+    display: inline-block;
+    border: 1px solid black;
+}
+.AbilityScore__box--button {
+    display: block;
+    width: 100%;
+    border: 1px solid black;
+}
+input[type="number"] {
+    appearance: textfield;
+}
