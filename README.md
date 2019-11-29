@@ -1,2 +1,8 @@
 # dnd-toolbox
-A self-hostable toolbox for players and DMs, built on React
+A self-hostable polished toolbox for players and DMs as a webapp built on React.
+
+## Planned Features
+[x] Character Sheet (working on this)
+[] Encounter Builder
+[] Initiative Tracker
+[] Dice Roller (???)
