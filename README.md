@@ -1,4 +1,12 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# dnd-toolbox
+A self-hostable polished toolbox for players and DMs as a webapp built on React.
+
+## Planned Features
+
+- [x] Character Sheet (working on this)
+- [ ] Encounter Builder
+- [ ] Initiative Tracker
+- [ ] Dice Roller (???)
 
 ## Available Scripts
 
