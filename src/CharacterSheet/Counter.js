@@ -1,11 +1,8 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import "./Counter.css"
 
-let MIN_LV = 1
-let MAX_LV = 20
-
 function Counter(props) {
-    const [counter, setCounter] = useState(1)
+    const [counter, setCounter] = useState(props.defaultValue || 0)
 
     return (
         <div className="Counter">
@@ -15,7 +12,8 @@ function Counter(props) {
             <div className="Counter__input">
                 <button
                     className="Counter__input--button"
-                    onClick={() => setCounter(counter > MIN_LV ? counter - 1 : MIN_LV)}
+                    onClick={() => setCounter(counter > props.minValue ? counter - 1 : props.minValue)}
+                    disabled={counter === props.minValue}
                 >−</button>
                 <span
                     className="Counter__input--number">
@@ -23,7 +21,8 @@ function Counter(props) {
                 </span>
                 <button
                     className="Counter__input--button"
-                    onClick={() => setCounter(counter < MAX_LV ? counter + 1 : MAX_LV)}
+                    onClick={() => setCounter(counter < props.maxValue ? counter + 1 : props.maxValue)}
+                    disabled={counter === props.maxValue}
                 >+</button>
             </div>
         </div>

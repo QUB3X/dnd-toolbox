@@ -1,42 +1,36 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import "./Proficiency.css"
 
 function Proficiency(props) {
-    const [name, setName] = useState(props.name)
     const [value, setValue] = useState(0)
 
-    return (
-        <li className="Proficiency">
-            <span className="Proficiency--value">
-                +{value}
-            </span>
-            {name}
-        </li>
-    )
-}
 
-function ProficiencyContainer(props) {
-    
-    const listActiveProficiencies = () => {
-        let list = []
-        for (let p of props.proficiencies) {
-            list.push(
-                <Proficiency
-                    name="{p.name}"
-                    value="{p.value}"
+    if (props.value !== 0 &&
+        !props.editable) {
+        return (
+            <li className="Proficiency">
+                <span className="Proficiency__value">
+                    +{value}
+                </span>
+                {props.name}
+            </li>
+        )
+    } else if (props.editable) {
+        return (
+            <li className="Proficiency">
+                +
+                <input
+                    className="Proficiency__value Proficiency__value--input"
+                    value={value}
+                    onChange={(e) => setValue(e.target.value)}
                 />
-            )
-        }
-    }
-    
-    return (
-        <ul className="ProficiencyContainer">
-            {listActiveProficiencies()}
-        </ul>
-    )
+                {props.name}
+
+            </li>
+        )
+    } else return null
 }
 
 export {
-    Proficiency,
-    ProficiencyContainer
+    Proficiency
 }

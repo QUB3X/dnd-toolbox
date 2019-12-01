@@ -1,0 +1,26 @@
+.Modal {
+    position: absolute;
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.9);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%239C92AC' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+.Modal__button {
+    display: inline-block;
+    width: 100%;
+    padding: 0.5em;
+    border: 1px solid black;
+}
+.Modal__title {
+    display: inline-block;
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+}
+.Modal__content {
+    display: block;
+}

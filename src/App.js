@@ -6,7 +6,10 @@ import Label from "./CharacterSheet/Label"
 import Counter from "./CharacterSheet/Counter"
 import AbilityScore from "./CharacterSheet/AbilityScore"
 
+import Fields from "./fields"
+
 function App() {
+
     return (
         <div className="App">
             <Row>
@@ -15,18 +18,24 @@ function App() {
                 <Label title="Date of Creation" />
             </Row>
             <Row>
-                <Counter title="Level" />
+                <Counter
+                    title="Level"
+                    defaultValue={1}
+                    minValue={1}
+                    maxValue={20}
+                />
                 <Label title="Class" />
                 <Label title="Background" />
                 <Label title="Alignment" />
             </Row>
             <Row>
-                <AbilityScore title="Strength" />
-                <AbilityScore title="Dexterity" />
-                <AbilityScore title="Constitution" />
-                <AbilityScore title="Intelligence" />
-                <AbilityScore title="Wisdom" />
-                <AbilityScore title="Charisma" />
+                {Fields.AbilityScores.map((e, i) => (
+                    <AbilityScore
+                        title={e.name}
+                        key={e.id}
+                        proficiencies={e.proficiencies}
+                    />
+                ))}
             </Row>
         </div>
     )

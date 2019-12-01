@@ -1,0 +1,64 @@
+{
+    "AbilityScores": [
+        {
+            "name": "Strength",
+            "id": "STR",
+            "proficiencies": [
+                "Saving Throws",
+                "Athletics"
+            ]
+        },
+        {
+            "name": "Dexterity",
+            "id": "DEX",
+            "proficiencies": [
+                "Saving Throws",
+                "Acrobatics",
+                "Sleight of Hand",
+                "Stealth"
+            ]
+        },
+        {
+            "name": "Constitution",
+            "id": "CON",
+            "proficiencies": [
+                "Saving Throws"
+            ]
+        },
+        {
+            "name": "Intelligence",
+            "id": "INT",
+            "proficiencies": [
+                "Saving Throws",
+                "Arcana",
+                "History",
+                "Investigation",
+                "Nature",
+                "Religion"
+            ]
+        },
+        {
+            "name": "Wisdom",
+            "id": "WIS",
+            "proficiencies": [
+                "Saving Throws",
+                "Animal Handling",
+                "Insight",
+                "Medicine",
+                "Perception",
+                "Survival"
+            ]
+        },
+        {
+            "name": "Charisma",
+            "id": "CHA",
+            "proficiencies": [
+                "Saving Throws",
+                "Deception",
+                "Intimidation",
+                "Performance",
+                "Persuasion"
+            ]
+        }
+    ]
+}

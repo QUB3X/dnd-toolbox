@@ -1,10 +1,15 @@
-.ProficiencyContainer {
-    display: block;
-    list-style: none;
-}
 .Proficiency {
     display: block;
 }
-.Proficiency--value {
+.Proficiency__value {
     text-decoration: underline;
+    margin-right: 0.5em;
+}
+.Proficiency__value--input {
+    background: transparent;
+    text-decoration: none;
+    border-bottom: 1px solid black;
+    margin-right: 0.5em;
+    text-align: right;
+    width: 2em;
 }
