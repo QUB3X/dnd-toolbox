@@ -15,13 +15,20 @@ function Counter(props) {
                     onClick={() => setCounter(counter > props.minValue ? counter - 1 : props.minValue)}
                     disabled={counter === props.minValue}
                 >−</button>
-                <span
-                    className="Counter__input--number">
-                    {counter}
-                </span>
+                <input
+                    className="Counter__input--number"
+                    type="number"
+                    pattern="\d*"
+                    value={counter}
+                    onChange={(e) => setCounter(parseInt(e.target.value) || 0)}
+                />
                 <button
                     className="Counter__input--button"
-                    onClick={() => setCounter(counter < props.maxValue ? counter + 1 : props.maxValue)}
+                    onClick={() => setCounter(
+                        (counter < props.maxValue) || (props.maxValue === null)
+                        ? counter + 1
+                        : props.maxValue)
+                    }
                     disabled={counter === props.maxValue}
                 >+</button>
             </div>

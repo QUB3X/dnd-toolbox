@@ -1,0 +1,15 @@
+.TextArea {
+    display: inline-block;
+}
+.TextArea__title {
+    display: block;
+}
+.TextArea__input {
+    font-size: 1rem;
+    display: block;
+    width: 100%;
+    border: 1px solid black;
+    height: 4em;
+    padding: 0 0.5em;
+    resize: none;
+}

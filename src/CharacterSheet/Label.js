@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react"
 import "./Label.css"
 
 function Label(props) {
-    const [text, setText] = useState("")
+    const [text, setText] = useState(props.value)
 
     return (
         <div className="Label">

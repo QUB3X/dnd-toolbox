@@ -7,7 +7,7 @@ let MIN_AS = 1
 let MAX_AS = 20
 
 function AbilityScore(props) {
-    const [score, setScore] = useState(MIN_AS)
+    const [score, setScore] = useState(props.value)
     const [modifier, setModifier] = useState(calcModifier(score))
 
     const setAbilityScore = (_score) => {
@@ -19,18 +19,6 @@ function AbilityScore(props) {
         }
         setScore(newScore)
         setModifier(calcModifier(newScore))
-    }
-
-    const listProficiencies = (proficiencies, editable) => {
-        return proficiencies.map((e, i) => (
-            <Proficiency
-                name={e}
-                value={0}
-                key={i}
-                editable={editable}
-                source={props.source}
-            />
-        ))
     }
 
     return (
@@ -49,7 +37,7 @@ function AbilityScore(props) {
                     type="number"
                     pattern="\d*"
                     value={score}
-                    onChange={(e) => setAbilityScore(e.target.value)}
+                    onChange={(e) => setAbilityScore(parseInt(e.target.value) || 1)}
                 />
                 <span
                     className="AbilityScore__box--modifier">
@@ -61,12 +49,10 @@ function AbilityScore(props) {
                     disabled={score === MIN_AS}
                 >−</button>
                 <ul className="AbilityScore__box--proficiencies">
-                    {listProficiencies(props.proficiencies, false)}
                     <Modal
                         title="Proficiencies"
-                        btnName="Edit"
+                        btnName="Proficiencies"
                     >
-                    {listProficiencies(props.proficiencies, true)}
                     </Modal>
                 </ul>        
             </div>

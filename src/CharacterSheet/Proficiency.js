@@ -1,8 +1,8 @@
-import React, {useState, useEffect} from "react"
+import React, {useState} from "react"
 import "./Proficiency.css"
 
 function Proficiency(props) {
-    const [value, setValue] = useState(0)
+    const [value, setValue] = useState(props.value)
 
 
     if (props.value !== 0 &&
