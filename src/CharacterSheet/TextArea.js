@@ -13,7 +13,10 @@ function TextArea(props) {
                 className="TextArea__input"
                 type="textarea" 
                 value={text}
-                onChange={(e) => setText(e.target.value)}
+                onChange={(e) => {
+                    setText(e.target.value)
+                    props.set(text)
+                }}
             />
         </div>
     )

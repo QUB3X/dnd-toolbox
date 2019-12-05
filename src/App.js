@@ -1,335 +1,406 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import "./App.css"
 
 import Label from "./CharacterSheet/Label"
 import Counter from "./CharacterSheet/Counter"
 import AbilityScore from "./CharacterSheet/AbilityScore"
 import TextArea from "./CharacterSheet/TextArea"
-import Fields from "./fields"
 
 function App() {
-
-    const [charName, setCharName] = useState("")
-    const [playerName, setPlayerName] = useState("")
-    const [date, setDate] = useState("")
-    const [level, setLevel] = useState(1)
-    const [charClass, setCharClass] = useState("")
-    const [background, setBackground] = useState("")
-    const [alignment, setAlignment] = useState("")
-
-    // Stats
-    const [str, setStr] = useState(1)
-    const [dex, setDex] = useState(1)
-    const [con, setCon] = useState(1)
-    const [int, setInt] = useState(1)
-    const [wis, setWis] = useState(1)
-    const [cha, setCha] = useState(1)
-    const [proficiency, setProficiency] = useState(0) // >= 0
-    const [inspiration, setInspiration] = useState(0) // >= 0
-    const [armorClass, setArmorClass] = useState(0) // >= 1
-    const [initiative, setInitiative] = useState(0) // >= 1
-    const [speed, setSpeed] = useState(0)
-    const [hp, setHp] = useState(0) // >= 0
-    const [maxHp, setMaxHp] = useState(0) // int >= 0
-    const [tempHp, setTempHp] = useState(0) // int >= 0
-    const [hitDie, setHitDie] = useState("") // string
-    const [totalHitDice, setTotalHitDice] = useState(0) // int
-    const [deathSaves, setDeathSaves] = useState(0) // -3 < x < +3
-    
-    // Money
-    const [coints, setCoins] = useState({
-        cp: 0, sp: 0, gp: 0, ep: 0, pp: 0,
-        total: 0
+    const [char, setChar] = useState({
+        charName: "",
+        playerName: "",
+        date: "",
+        level: 1,
+        charClass: "",
+        background: "",
+        alignment: "",
+        str: 1,
+        dex: 1,
+        con: 1,
+        int: 1,
+        wis: 1,
+        cha: 1,
+        proficiency: 2,
+        inspiration: 0,
+        armorClass: 0,
+        initiative: 0,
+        speed: 0,
+        hp: 1,
+        maxHp: 0,
+        tempHp: 0,
+        hitDie: 0,
+        totalHitDice: 0,
+        deathSaves: 0,
+        coints: {
+            cp: 0, sp: 0, gp: 0, ep: 0, pp: 0,
+            total: 0
+        },
+        equipment: [],
+        weapons: [],
+        notes: "",
+        features: "",
+        // Details
+        personality: "",
+        ideals: "",
+        bonds:"",
+        flaws: "",
+        age: "",
+        sex: "",
+        height: "",
+        weight: "",
+        eyes: "",
+        skin: "",
+        size: "",
+        voice: "",
+        divinity: "",
+        languages: "",
+        allies: "",
+        enemies: "",
+        organizations: ""
     })
 
-    // Inventory
-    const [equipment, setEquipment] = useState("")
-    const [weapons, setWeapons] = useState([])
-    const [notes, setNotes] = useState("")
-    
-    // Possible Dynamic Linking
-    const [features, setFeatures] = useState("") // also traits
-
-    // Details
-    const [personality, setPersonality] = useState("")
-    const [ideals, setIdeals] = useState("")
-    const [bonds, setBonds] = useState("")
-    const [flaws, setFlaws] = useState("")
-    const [age, setAge] = useState("")
-    const [sex, setSex] = useState("")
-    const [height, setHeight] = useState("")
-    const [weight, setWeight] = useState("")
-    const [eyes, setEyes] = useState("")
-    const [skin, setSkin] = useState("")
-    const [size, setSize] = useState("")
-    const [voice, setVoice] = useState("")
-    const [divinity, setDivinity] = useState("")
-    const [languages, setLanguages] = useState("")
-    const [allies, setAllies] = useState("")
-    const [enemies, setEnemies] = useState("")
-    const [organizations, setOrganizations] = useState("")
-
-
+    useEffect(() => {
+        console.log(char)
+    })
 
     return (
         <div className="App">
             <div className="Row">
                 <Label
                     title="Character Name"
-                    value={charName}
-                    set={(value) => setCharName(value)}
+                    value={char.charName}
+                    set={(value) => setChar({
+                        ...char, charName: value
+                    })}
                 />
                 <Label
                     title="Player Name"
-                    value={playerName}
-                    set={(value) => setPlayerName(value)}
+                    value={char.playerName}
+                    set={(value) => setChar({
+                        ...char, playerName: value
+                    })}
                 />
                 <Label
                     title="Date of Creation"
-                    value={date}
-                    set={(value) => setDate(value)}
+                    value={char.date}
+                    set={(value) => setChar({
+                        ...char, date: value
+                    })}
                 />
             </div>
             <div className="Row">
                 <Counter
                     title="Level"
-                    value={level}
+                    value={char.level}
                     minValue={1}
                     maxValue={20}
-                    set={(value) => setLevel(value)}
+                    set={(value) => setChar({
+                        ...char, level: value
+                    })}
                 />
                 <Label
                     title="Class"
-                    value={charClass}
-                    set={(value) => setCharClass(value)}
+                    value={char.charClass}
+                    set={(value) => setChar({
+                        ...char, charClass: value
+                    })}
                 />
                 <Label
                     title="Background"
-                    value={background}
-                    set={(value) => setBackground(value)}
+                    value={char.background}
+                    set={(value) => setChar({
+                        ...char, background: value
+                    })}
                 />
                 <Label
                     title="Alignment"
-                    value={alignment}
-                    set={(value) => setAlignment(value)}
+                    value={char.alignment}
+                    set={(value) => setChar({
+                        ...char, alignment: value
+                    })}
                 />
             </div>
             <div className="Row">
                 <AbilityScore
                     title="Strength"
-                    value={str}
-                    set={(value) => setStr(value)}
+                    value={char.str}
+                    set={(value) => setChar({
+                        ...char, str: value
+                    })}
                 />
                 <AbilityScore
                     title="Dexterity"
-                    value={dex}
-                    set={(value) => setDex(value)}
+                    value={char.dex}
+                    set={(value) => setChar({
+                        ...char, dex: value
+                    })}
                 />
                 <AbilityScore
                     title="Constitution"
-                    value={con}
-                    set={(value) => setCon(value)}
+                    value={char.con}
+                    set={(value) => setChar({
+                        ...char, con: value
+                    })}
                 />
                 <AbilityScore
                     title="Intellect"
-                    value={int}
-                    set={(value) => setInt(value)}
+                    value={char.int}
+                    set={(value) => setChar({
+                        ...char, int: value
+                    })}
                 />
                 <AbilityScore
                     title="Wisdom"
-                    value={wis}
-                    set={(value) => setWis(value)}
+                    value={char.wis}
+                    set={(value) => setChar({
+                        ...char, wis: value
+                    })}
                 />
                 <AbilityScore
                     title="Charisma"
-                    value={cha}
-                    set={(value) => setCha(value)}
+                    value={char.cha}
+                    set={(value) => setChar({
+                        ...char, cha: value
+                    })}
                 />
-            </div>
-            <div className="Row">
-                <Counter
-                    title="Proficiency"
-                    value={proficiency}
-                    minValue={2}
-                    maxValue={6}
-                    set={(value) => setProficiency(value)}
-                />
-                <Counter
-                    title="Inspiration"
-                    value={inspiration}
-                    minValue={0}
-                    maxValue={null}
-                    set={(value) => setInspiration(value)}
-                />
-                {/* Passive WIS */}
-            </div>
-            <div className="Row">
-                <Counter
-                    title="Armor Class"
-                    value={armorClass}
-                    minValue={0}
-                    maxValue={null}
-                    set={(value) => setArmorClass(value)}
-                />
-                <Counter
-                    title="Initiative"
-                    value={initiative}
-                    minValue={0}
-                    maxValue={null}
-                    set={(value) => setInitiative(value)}
-                />
-                <Counter
-                    title="Speed"
-                    value={speed}
-                    minValue={0}
-                    maxValue={null}
-                    set={(value) => setSpeed(value)}
-                />
-            </div>
-            <div className="Row">
-                <Counter
-                    title="Hit Ponts"
-                    value={hp}
-                    minValue={0}
-                    maxValue={null}
-                    set={(value) => setHp(value)}
-                />
-                <Counter
-                    title="Maximum"
-                    value={maxHp}
-                    minValue={0}
-                    maxValue={null}
-                    set={(value) => setMaxHp(value)}
-                />
-                <Counter
-                    title="Temporary"
-                    value={tempHp}
-                    minValue={0}
-                    maxValue={null}
-                    set={(value) => setTempHp(value)}
-                />
-            </div>
-            <div className="Row">
-                {/* Hit Dice */}
-                {/* Death Saves */}
-            </div>
-            <div className="Row">
-                <TextArea 
-                    title="Personality Traits"
-                    value={personality}
-                    set={(value) => setPersonality(value)}
-                />
-            </div>
-            <div className="Row">
-                <TextArea 
-                    title="Ideals"
-                    value={ideals}
-                    set={(value) => setIdeals(value)}
-                />
-            </div>
-            <div className="Row">
-                <TextArea 
-                    title="Bonds"
-                    value={bonds}
-                    set={(value) => setBonds(value)}
-                />
-            </div>
-            <div className="Row">
-                <TextArea 
-                    title="Flaws"
-                    value={flaws}
-                    set={(value) => setFlaws(value)}
-                />
-            </div>
-            <div className="Row">
-                <Label
-                    title="Age"
-                    value={age}
-                    set={(value) => setAge(value)}
-                />
-                <Label
-                    title="Sex"
-                    value={sex}
-                    set={(value) => setSex(value)}
-                />
-            </div>
-            <div className="Row">
-                <Label
-                    title="Height"
-                    value={height}
-                    set={(value) => setHeight(value)}
-                />
-                <Label
-                    title="Weight"
-                    value={weight}
-                    set={(value) => setWeight(value)}
-                />
-            </div>
-            <div className="Row">
-                <Label
-                    title="Eyes"
-                    value={eyes}
-                    set={(value) => setEyes(value)}
-                />
-                <Label
-                    title="Skin"
-                    value={skin}
-                    set={(value) => setSkin(value)}
-                />
-            </div>
-            <div className="Row">
-                <Label
-                    title="Size"
-                    value={size}
-                    set={(value) => setSize(value)}
-                />
-                <Label
-                    title="Voice"
-                    value={voice}
-                    set={(value) => setVoice(value)}
-                />
-            </div>
-            <div className="Row">
-                <Label
-                    title="Divinity and Domain"
-                    value={divinity}
-                    set={(value) => setDivinity(value)}
-                />
-            </div>
-            <div className="Row">
-                <TextArea 
-                    title="Flaws"
-                    value={flaws}
-                    set={(value) => setFlaws(value)}
-                />
-            </div>
-            <div className="Row">
-                <TextArea 
-                    title="Languages"
-                    value={languages}
-                    set={(value) => setLanguages(value)}
-                />
-            </div>
-            <div className="Row">
-                <TextArea 
-                    title="Allies"
-                    value={allies}
-                    set={(value) => setAllies(value)}
-                />
-            </div>
-            <div className="Row">
-                <TextArea 
-                    title="Organizations"
-                    value={organizations}
-                    set={(value) => setOrganizations(value)}
-                />
-            </div>
-            <div className="Row">
-                <TextArea 
-                    title="Enemies"
-                    value={allies}
-                    set={(value) => setEnemies(value)}
-                />
+                <div className="Row">
+                    <Counter
+                        title="Proficiency"
+                        value={char.proficiency}
+                        minValue={2}
+                        maxValue={6}
+                        set={(value) => setChar({
+                            ...char, proficiency: value
+                        })}
+                    />
+                    <Counter
+                        title="Inspiration"
+                        value={char.inspiration}
+                        minValue={0}
+                        maxValue={null}
+                        set={(value) => setChar({
+                            ...char, inspiration: value
+                        })}
+                    />
+                    {/* Passive WIS */}
+                </div>
+                <div className="Row">
+                    <Counter
+                        title="Armor Class"
+                        value={char.armorClass}
+                        minValue={0}
+                        maxValue={null}
+                        set={(value) => setChar({
+                            ...char, armorClass: value
+                        })}
+                    />
+                    <Counter
+                        title="Initiative"
+                        value={char.initiative}
+                        minValue={0}
+                        maxValue={null}
+                        set={(value) => setChar({
+                            ...char, initiative: value
+                        })}
+                    />
+                    <Counter
+                        title="Speed"
+                        value={char.speed}
+                        minValue={0}
+                        maxValue={null}
+                        set={(value) => setChar({
+                            ...char, speed: value
+                        })}
+                    />
+                </div>
+                <div className="Row">
+                    <Counter
+                        title="Hit Ponts"
+                        value={char.hp}
+                        minValue={0}
+                        maxValue={null}
+                        set={(value) => setChar({
+                            ...char, hp: value
+                        })}
+                    />
+                    <Counter
+                        title="Maximum"
+                        value={char.maxHp}
+                        minValue={0}
+                        maxValue={null}
+                        set={(value) => setChar({
+                            ...char, maxHp: value
+                        })}
+                    />
+                    <Counter
+                        title="Temporary"
+                        value={char.tempHp}
+                        minValue={0}
+                        maxValue={null}
+                        set={(value) => setChar({
+                            ...char, tempHp: value
+                        })}
+                    />
+                </div>
+                <div className="Row">
+                    {/* Hit Dice */}
+                    {/* Death Saves */}
+                </div>
+                <div className="Row">
+                    <TextArea 
+                        title="Personality Traits"
+                        value={char.personality}
+                        set={(value) => setChar({
+                            ...char, personality: value
+                        })}
+                    />
+                </div>
+                <div className="Row">
+                    <TextArea 
+                        title="Ideals"
+                        value={char.ideals}
+                        set={(value) => setChar({
+                            ...char, ideals: value
+                        })}
+                    />
+                </div>
+                <div className="Row">
+                    <TextArea 
+                        title="Bonds"
+                        value={char.bonds}
+                        set={(value) => setChar({
+                            ...char, bonds: value
+                        })}
+                    />
+                </div>
+                <div className="Row">
+                    <TextArea 
+                        title="Flaws"
+                        value={char.flaws}
+                        set={(value) => setChar({
+                            ...char, flaws: value
+                        })}
+                    />
+                </div>
+                <div className="Row">
+                    <Label
+                        title="Age"
+                        value={char.age}
+                        set={(value) => setChar({
+                            ...char, age: value
+                        })}
+                    />
+                    <Label
+                        title="Sex"
+                        value={char.sex}
+                        set={(value) => setChar({
+                            ...char, sex: value
+                        })}
+                    />
+                </div>
+                <div className="Row">
+                    <Label
+                        title="Height"
+                        value={char.height}
+                        set={(value) => setChar({
+                            ...char, height: value
+                        })}
+                    />
+                    <Label
+                        title="Weight"
+                        value={char.weight}
+                        set={(value) => setChar({
+                            ...char, weight: value
+                        })}
+                    />
+                </div>
+                <div className="Row">
+                    <Label
+                        title="Eyes"
+                        value={char.eyes}
+                        set={(value) => setChar({
+                            ...char, eyes: value
+                        })}
+                    />
+                    <Label
+                        title="Skin"
+                        value={char.skin}
+                        set={(value) => setChar({
+                            ...char, skin: value
+                        })}
+                    />
+                </div>
+                <div className="Row">
+                    <Label
+                        title="Size"
+                        value={char.size}
+                        set={(value) => setChar({
+                            ...char, size: value
+                        })}
+                    />
+                    <Label
+                        title="Voice"
+                        value={char.voice}
+                        set={(value) => setChar({
+                            ...char, voice: value
+                        })}
+                    />
+                </div>
+                <div className="Row">
+                    <Label
+                        title="Divinity and Domain"
+                        value={char.divinity}
+                        set={(value) => setChar({
+                            ...char, divinity: value
+                        })}
+                    />
+                </div>
+                <div className="Row">
+                    <TextArea 
+                        title="Flaws"
+                        value={char.flaws}
+                        set={(value) => setChar({
+                            ...char, flaws: value
+                        })}
+                    />
+                </div>
+                <div className="Row">
+                    <TextArea 
+                        title="Languages"
+                        value={char.languages}
+                        set={(value) => setChar({
+                            ...char, languages: value
+                        })}
+                    />
+                </div>
+                <div className="Row">
+                    <TextArea 
+                        title="Allies"
+                        value={char.allies}
+                        set={(value) => setChar({
+                            ...char, allies: value
+                        })}
+                    />
+                </div>
+                <div className="Row">
+                    <TextArea 
+                        title="Organizations"
+                        value={char.organizations}
+                        set={(value) => setChar({
+                            ...char, organizations: value
+                        })}
+                    />
+                </div>
+                <div className="Row">
+                    <TextArea 
+                        title="Enemies"
+                        value={char.enemies}
+                        set={(value) => setChar({
+                            ...char, enemies: value
+                        })}
+                    />
+                </div>
             </div>
         </div>
     )

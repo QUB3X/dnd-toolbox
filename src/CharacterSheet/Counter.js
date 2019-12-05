@@ -1,8 +1,8 @@
-import React, {useState, useEffect} from "react"
+import React, {useState} from "react"
 import "./Counter.css"
 
 function Counter(props) {
-    const [counter, setCounter] = useState(props.defaultValue || 0)
+    const [counter, setCounter] = useState(props.value || 0)
 
     return (
         <div className="Counter">
@@ -12,7 +12,13 @@ function Counter(props) {
             <div className="Counter__input">
                 <button
                     className="Counter__input--button"
-                    onClick={() => setCounter(counter > props.minValue ? counter - 1 : props.minValue)}
+                    onClick={() => {
+                        setCounter(
+                            (counter > props.minValue)
+                            ? counter - 1
+                            : props.minValue)
+                        props.set(counter)
+                    }}
                     disabled={counter === props.minValue}
                 >−</button>
                 <input
@@ -20,15 +26,20 @@ function Counter(props) {
                     type="number"
                     pattern="\d*"
                     value={counter}
-                    onChange={(e) => setCounter(parseInt(e.target.value) || 0)}
+                    onChange={(e) => {
+                        setCounter(parseInt(e.target.value) || 0)
+                        props.set(counter)
+                    }}
                 />
                 <button
                     className="Counter__input--button"
-                    onClick={() => setCounter(
-                        (counter < props.maxValue) || (props.maxValue === null)
-                        ? counter + 1
-                        : props.maxValue)
-                    }
+                    onClick={() => {
+                        setCounter(
+                            (counter < props.maxValue) || (props.maxValue === null)
+                            ? counter + 1
+                            : props.maxValue)
+                        props.set(counter)
+                    }}
                     disabled={counter === props.maxValue}
                 >+</button>
             </div>

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react"
+import React, {useState} from "react"
 import "./Label.css"
 
 function Label(props) {
@@ -13,7 +13,10 @@ function Label(props) {
                 className="Label__input"
                 type="text" 
                 value={text}
-                onChange={(e) => setText(e.target.value)}
+                onChange={(e) => {
+                    setText(e.target.value)
+                    props.set(text)
+                }}
             />
         </div>
     )

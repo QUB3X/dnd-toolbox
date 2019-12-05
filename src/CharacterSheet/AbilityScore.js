@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import "./AbilityScore.css"
 import {Proficiency} from "./Proficiency"
 import {Modal} from "./Modal"
@@ -19,6 +19,7 @@ function AbilityScore(props) {
         }
         setScore(newScore)
         setModifier(calcModifier(newScore))
+        props.set(score)
     }
 
     return (
@@ -47,14 +48,7 @@ function AbilityScore(props) {
                     className="AbilityScore__box--button"
                     onClick={() => setAbilityScore(score - 1)}
                     disabled={score === MIN_AS}
-                >−</button>
-                <ul className="AbilityScore__box--proficiencies">
-                    <Modal
-                        title="Proficiencies"
-                        btnName="Proficiencies"
-                    >
-                    </Modal>
-                </ul>        
+                >−</button>   
             </div>
         </div>
     )

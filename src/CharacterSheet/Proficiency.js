@@ -3,8 +3,7 @@ import "./Proficiency.css"
 
 function Proficiency(props) {
     const [value, setValue] = useState(props.value)
-
-
+    
     if (props.value !== 0 &&
         !props.editable) {
         return (
