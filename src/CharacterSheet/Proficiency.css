@@ -11,5 +11,15 @@
     border-bottom: 1px solid black;
     margin-right: 0.5em;
     text-align: right;
+    padding: 0.25em;
     width: 2em;
+}
+.Proficiency__box {
+    display: inline-block;
+    vertical-align: top;
+    padding: 0.5rem;
+}
+.Proficiency__box h3 {
+    text-transform: uppercase;
+    font-weight: bold;
 }

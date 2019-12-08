@@ -1,0 +1,89 @@
+{
+    "charName": "",
+    "playerName": "",
+    "date": "",
+    "level": 1,
+    "charClass": "",
+    "background": "",
+    "alignment": "",
+    "str": 1,
+    "dex": 1,
+    "con": 1,
+    "int": 1,
+    "wis": 1,
+    "cha": 1,
+    "proficiencies": {
+        "str": {
+            "Saving Throws": 0,
+            "Athletics": 0
+        },
+        "dex": {
+            "Saving Throws": 0,
+            "Acrobatics": 0,
+            "Sleight of Hand": 0,
+            "Stealth": 0
+        },
+        "con": {
+            "Saving Throws": 0
+        },
+        "int": {
+            "Saving Throws": 0,
+            "Arcana": 0,
+            "History": 0,
+            "Investigation": 0,
+            "Nature": 0,
+            "Religion": 0
+        },
+        "wis": {
+            "Saving Throws": 0,
+            "Animal Handling": 0,
+            "Insight": 0,
+            "Medicine": 0,
+            "Perception": 0,
+            "Survival": 0
+        },
+        "cha": {
+            "Saving Throws": 0,
+            "Deception": 0,
+            "Intimidation": 0,
+            "Performance": 0,
+            "Persuasion": 0
+        }
+    },
+    "proficiency": 2,
+    "inspiration": 0,
+    "armorClass": 0,
+    "initiative": 0,
+    "speed": 0,
+    "hp": 1,
+    "maxHp": 0,
+    "tempHp": 0,
+    "hitDie": 0,
+    "totalHitDice": 0,
+    "deathSaves": 0,
+    "coints": {
+        "cp": 0, "sp": 0, "gp": 0, "ep": 0, "pp": 0,
+        "total": 0
+    },
+    "equipment": [],
+    "weapons": [],
+    "notes": "",
+    "features": "",
+    "personality": "",
+    "ideals": "",
+    "bonds":"",
+    "flaws": "",
+    "age": "",
+    "sex": "",
+    "height": "",
+    "weight": "",
+    "eyes": "",
+    "skin": "",
+    "size": "",
+    "voice": "",
+    "divinity": "",
+    "languages": "",
+    "allies": "",
+    "enemies": "",
+    "organizations": ""
+}

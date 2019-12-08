@@ -1,7 +1,5 @@
 import React, {useState} from "react";
 import "./AbilityScore.css"
-import {Proficiency} from "./Proficiency"
-import {Modal} from "./Modal"
 
 let MIN_AS = 1
 let MAX_AS = 20
@@ -19,7 +17,7 @@ function AbilityScore(props) {
         }
         setScore(newScore)
         setModifier(calcModifier(newScore))
-        props.set(score)
+        props.set(newScore)
     }
 
     return (

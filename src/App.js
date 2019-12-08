@@ -5,60 +5,13 @@ import Label from "./CharacterSheet/Label"
 import Counter from "./CharacterSheet/Counter"
 import AbilityScore from "./CharacterSheet/AbilityScore"
 import TextArea from "./CharacterSheet/TextArea"
+import Modal from "./CharacterSheet/Modal"
+import {ProficiencyContainer} from "./CharacterSheet/Proficiency"
+
+import CharDataModel from "./CharacterSheet/CharacterDataModel"
 
 function App() {
-    const [char, setChar] = useState({
-        charName: "",
-        playerName: "",
-        date: "",
-        level: 1,
-        charClass: "",
-        background: "",
-        alignment: "",
-        str: 1,
-        dex: 1,
-        con: 1,
-        int: 1,
-        wis: 1,
-        cha: 1,
-        proficiency: 2,
-        inspiration: 0,
-        armorClass: 0,
-        initiative: 0,
-        speed: 0,
-        hp: 1,
-        maxHp: 0,
-        tempHp: 0,
-        hitDie: 0,
-        totalHitDice: 0,
-        deathSaves: 0,
-        coints: {
-            cp: 0, sp: 0, gp: 0, ep: 0, pp: 0,
-            total: 0
-        },
-        equipment: [],
-        weapons: [],
-        notes: "",
-        features: "",
-        // Details
-        personality: "",
-        ideals: "",
-        bonds:"",
-        flaws: "",
-        age: "",
-        sex: "",
-        height: "",
-        weight: "",
-        eyes: "",
-        skin: "",
-        size: "",
-        voice: "",
-        divinity: "",
-        languages: "",
-        allies: "",
-        enemies: "",
-        organizations: ""
-    })
+    const [char, setChar] = useState(CharDataModel)
 
     useEffect(() => {
         console.log(char)
@@ -121,7 +74,7 @@ function App() {
                     })}
                 />
             </div>
-            <div className="Row">
+            <div className="Row--main">
                 <AbilityScore
                     title="Strength"
                     value={char.str}
@@ -164,7 +117,19 @@ function App() {
                         ...char, cha: value
                     })}
                 />
+                </div>
+
                 <div className="Row">
+                    <Modal title="Proficiencies">
+                        <ProficiencyContainer
+                            value={char.proficiencies}
+                            set={(value) => setChar({
+                                ...char, proficiencies: value
+                            })}
+                        />
+                    </Modal>
+                </div>
+                <div className="Row--side">
                     <Counter
                         title="Proficiency"
                         value={char.proficiency}
@@ -185,7 +150,7 @@ function App() {
                     />
                     {/* Passive WIS */}
                 </div>
-                <div className="Row">
+                <div className="Row--side">
                     <Counter
                         title="Armor Class"
                         value={char.armorClass}
@@ -402,7 +367,6 @@ function App() {
                     />
                 </div>
             </div>
-        </div>
     )
 }
 

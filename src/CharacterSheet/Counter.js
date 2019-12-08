@@ -17,7 +17,7 @@ function Counter(props) {
                             (counter > props.minValue)
                             ? counter - 1
                             : props.minValue)
-                        props.set(counter)
+                        props.set(counter - 1)
                     }}
                     disabled={counter === props.minValue}
                 >−</button>
@@ -27,8 +27,8 @@ function Counter(props) {
                     pattern="\d*"
                     value={counter}
                     onChange={(e) => {
-                        setCounter(parseInt(e.target.value) || 0)
-                        props.set(counter)
+                        setCounter(parseInt(e.target.value) || counter)
+                        props.set(parseInt(e.target.value) || counter)
                     }}
                 />
                 <button
@@ -38,7 +38,7 @@ function Counter(props) {
                             (counter < props.maxValue) || (props.maxValue === null)
                             ? counter + 1
                             : props.maxValue)
-                        props.set(counter)
+                        props.set(counter + 1)
                     }}
                     disabled={counter === props.maxValue}
                 >+</button>

@@ -7,28 +7,29 @@ function Modal(props) {
     if (visible) {
         return (
             <div className="Modal">
-                <button
-                    className="Modal__button"
-                    onClick={() => setVisible(false)}
-                >Close</button>
-                <h2 className="Modal__title">
-                    {props.title}
-                </h2>
+                <div className="Modal__header">
+                    <h2 className="Modal__title">
+                        {props.title}
+                    </h2>
+                    <button
+                        className="Modal__button"
+                        onClick={() => setVisible(false)}
+                    >Close
+                    </button>
+                </div>
                 <div className="Modal__content">
                     {props.children} 
                 </div>
                 
             </div>
         )
-        } else return (
-            <button
-                className="Modal__button"
-                onClick={() => setVisible(true)}>
-                {props.btnName}
-            </button>
-        )
+    } else return (
+        <button
+            className="Modal__button"
+            onClick={() => setVisible(true)}>
+            {props.title}
+        </button>
+    )
 }
 
-export {
-    Modal
-}
+export default Modal
